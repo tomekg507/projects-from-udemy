@@ -9,7 +9,7 @@ def translate(word):
         translated_word = ''
         for letter in word.lower():
             index = letters.index(letter)
-            # print(morse_code[index], end=' ')
+            #print(morse_code[index], end=' ')
             translated_word += f'{morse_code[index]} '
         return translated_word
 
@@ -30,4 +30,4 @@ while to_continue:
         if exit == 'q':
             to_continue = False
 
-print('Bye bye!')
+print('Bye bye!!')
