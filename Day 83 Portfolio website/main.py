@@ -11,4 +11,8 @@ def home():
 def about():
     return render_template('about.html')
 
+@app.route('/cv')
+def cv():
+    return render_template('cv.html')
+
 app.run(debug=True)
