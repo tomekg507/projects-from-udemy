@@ -43,17 +43,48 @@ def player_turn(positions, player):
     correct_input = False
 
     while not correct_input:
-        choice = int(input(f"Player '{player.capitalize()}', choose your square: "))
-        if choice in all_positions:
-            print('This square is already taken')
-        else:
-            positions.append(choice)
-            if player == 'x':
-                rows[choice - 1] = ' x '
-            elif player == 'o':
+        if player == 'o':
+            choice = int(input(f"Player '{player.capitalize()}', choose your square: "))
+            if choice in all_positions:
+                print('This square is already taken')
+            else:
+                positions.append(choice)
                 rows[choice - 1] = ' o '
-            display_board(rows)
-            correct_input = True
+                display_board(rows)
+                correct_input = True
+
+        elif player == 'x':
+            print('Computer move')
+            if 5 not in list_x:
+                list_x.append(5)
+                rows[4] = ' x '
+                display_board(rows)
+                correct_input = True
+            if len(list_o) == 1 and (2 in list_o or 4 in list_o or 6 in list_o or 8 in list_o):
+                list_x.append(1)
+                rows[0] = ' x '
+                display_board(rows)
+                correct_input = True
+            if len(list_o) == 2 and 9 not in list_o:
+                list_x.append(9)
+                rows[8] = ' x '
+                display_board(rows)
+                correct_input = True
+            elif len(list_o) == 2:
+                list_x.append(7)
+                rows[6] = ' x '
+                display_board(rows)
+                correct_input = True
+            if len(list_o) == 3 and 4 not in list_o:
+                list_x.append(4)
+                rows[3] = ' x '
+                display_board(rows)
+                correct_input = True
+            elif len(list_o) == 3:
+                list_x.append(3)
+                rows[2] = ' x '
+                display_board(rows)
+                correct_input = True
 
 
 while True:
