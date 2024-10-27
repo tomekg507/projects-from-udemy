@@ -1,0 +1,88 @@
+[33mcommit eeac067f643c92ca66486b48182f49ef28f7fed3[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin2/day85[m[33m, [m[1;31morigin/day85[m[33m, [m[1;32mday85[m[33m)[m
+Merge: 007e8ca cdb4bd3
+Author: Tomek <tomek.galazka.mp@gmail.com>
+Date:   Fri Oct 25 14:48:18 2024 +0200
+
+    Merge branch 'master' into day85
+
+[33mcommit 007e8ca48526b8399cd2b3385c211a3b6936bf5e[m
+Author: Tomek <tomek.galazka.mp@gmail.com>
+Date:   Fri Oct 25 14:34:22 2024 +0200
+
+    finished project without catching exceptions
+
+[33mcommit aab907eb82dd42782a0ed0f2c7577f0e2fc37e85[m
+Author: Tomek <tomek.galazka.mp@gmail.com>
+Date:   Thu Oct 24 18:59:46 2024 +0200
+
+    Initial files
+
+[33mcommit cdb4bd30daf80c2fcb8cb37c70d7f257ca4b2523[m
+Merge: 55f3c6a e4c7f52
+Author: tomekg507 <146986888+tomekg507@users.noreply.github.com>
+Date:   Thu Oct 24 18:56:04 2024 +0200
+
+    Merge pull request #1 from tomekg507/day84
+    
+    Day84
+
+[33mcommit e4c7f5261ed8881b18cd03af5bab567beb667e00[m[33m ([m[1;31morigin2/day84[m[33m, [m[1;31morigin/day84[m[33m, [m[1;32mday84[m[33m)[m
+Author: Tomek <tomek.galazka.mp@gmail.com>
+Date:   Thu Oct 24 18:54:33 2024 +0200
+
+    Finish 2 player game and add AI where computer has a winning stategy. The rest is yet to finish"
+
+[33mcommit b6e55a07c46b071e2d4828f008ab05348ad9575b[m
+Author: Tomek <tomek.galazka.mp@gmail.com>
+Date:   Tue Oct 22 14:47:01 2024 +0200
+
+    hello
+
+[33mcommit cdc278d32575979594c34c0c3ca5bbdcc41925ce[m
+Author: Tomek <tomek.galazka.mp@gmail.com>
+Date:   Tue Oct 22 14:45:58 2024 +0200
+
+    initial file
+
+[33mcommit 55f3c6a0e71c1cafda49734f3207926c5cb4fe4b[m
+Merge: 156c0de 08d24de
+Author: Tomek <tomek.galazka.mp@gmail.com>
+Date:   Tue Oct 22 14:19:49 2024 +0200
+
+    final work for now
+
+[33mcommit 156c0ded01c403d1bd5a5eee8b7ea472cbce2ecb[m
+Author: Tomek <tomek.galazka.mp@gmail.com>
+Date:   Tue Oct 22 14:18:40 2024 +0200
+
+    ...
+
+[33mcommit 08d24dee592f6b297f832c24516120348d3ec2ec[m
+Author: Tomek <tomek.galazka.mp@gmail.com>
+Date:   Tue Oct 22 14:17:11 2024 +0200
+
+    Add pop up
+
+[33mcommit 1963082665a28085254bb273b218471b8590fd4b[m[33m ([m[1;31morigin2/work[m[33m, [m[1;31morigin/work[m[33m)[m
+Author: Tomek <tomek.galazka.mp@gmail.com>
+Date:   Tue Oct 22 13:14:01 2024 +0200
+
+    First version
+
+[33mcommit 01af66a06df597201fbfbe8e27a9e15113628828[m
+Author: Tomek <tomek.galazka.mp@gmail.com>
+Date:   Sun Oct 20 16:22:32 2024 +0200
+
+    Add a comment in the beginning
+
+[33mcommit 866780ea15e269b2cda77e45a7c069a3da720932[m
+Author: Tomek <tomek.galazka.mp@gmail.com>
+Date:   Sun Oct 20 16:17:30 2024 +0200
+
+    Modify translate function
+
+[33mcommit 70c4a2b33c09f277d72a5393290e6711f341a210[m
+Author: Tomek <tomek.galazka.mp@gmail.com>
+Date:   Sun Oct 20 16:12:25 2024 +0200
+
+    Day 82
