@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hihi</title>
+</head>
+<body>
+{% for item in database %}
+<li>{{ item.name }}</li>
+{% endfor %}
+<form action="{{ url_for('home') }}" method="post">
+    <input type="checkbox" id="has_socket" name="has_socket", value='1'>
+    <label for="has_socket">Has socket?</label>
+    <input type="checkbox" id="has_wifi" name="has_wifi", value="1">
+    <label for="has_wifi">Has wifi?</label>
+    <input type="checkbox" id="has_toilet" name="has_toilet", value="1">
+    <label for="has_toilet">Has toilet?</label>
+    <button type="submit">ok</button>
+</form>
+</body>
+</html>
