@@ -8,13 +8,14 @@ from endgame import EndGame
 colors = ['blue', 'green', 'red', 'yellow']
 FONT = ("Arial", 40, 'normal')
 
+
 #---------------SCREEN--------------
 screen = Screen()
 screen.setup(width=800, height=600)
 screen.tracer(0)
 
 #--------------PADDLE AND BALL---------------
-paddle = Paddle(y_position=-250)
+paddle = Paddle()
 ball = Ball()
 
 #--------------BLOCKS----------------------
@@ -42,8 +43,9 @@ while game_is_on:
     ball.move()
 
     #End of the game
-    if paddle.distance(ball) < 71:
-        ball.bounce(direction='top')
+    for part in paddle.parts:
+        if part.distance(ball) < 21:
+            ball.bounce(direction='top')
     if len(blocks) == 0:
         game_is_on = False
         screen.clear()
@@ -66,6 +68,4 @@ while game_is_on:
         endgame.lose(FONT)
 
     screen.update()
-
-
 screen.mainloop()
