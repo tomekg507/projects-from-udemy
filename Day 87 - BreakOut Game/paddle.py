@@ -1,19 +1,30 @@
 from turtle import Turtle
 
-class Paddle(Turtle):
-    def __init__(self, y_position):
-        super().__init__()
-        self.shape('square')
-        self.color('black')
-        self.penup()
-        self.shapesize(stretch_wid=1, stretch_len=7)
-        self.goto(x=0, y=y_position)
+STARTING_POSITIONS = [(-60, -220), (-40, -220), (-20, -220), (0, -220), (20, -220), (40, -220), (60, -220)]
+
+
+class Paddle:
+    def __init__(self):
+        self.parts = []
+        self.create_paddle()
+
+    def create_paddle(self):
+        for position in STARTING_POSITIONS:
+            self.add_part(position)
+
+    def add_part(self, position):
+        part = Turtle(shape='square')
+        part.penup()
+        part.goto(position)
+        self.parts.append(part)
 
     def go_left(self):
-        x_cord = self.xcor() - 30
-        y_cord = self.ycor()
-        self.goto(x=x_cord, y=y_cord)
+        for part in self.parts:
+            x_cord = part.xcor() - 20
+            y_cord = part.ycor()
+            part.goto(x=x_cord, y=y_cord)
     def go_right(self):
-        x_cord = self.xcor() + 30
-        y_cord = self.ycor()
-        self.goto(x=x_cord, y=y_cord)
+        for part in self.parts:
+            x_cord = part.xcor() + 20
+            y_cord = part.ycor()
+            part.goto(x=x_cord, y=y_cord)
