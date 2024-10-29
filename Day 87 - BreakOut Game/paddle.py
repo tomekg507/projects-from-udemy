@@ -6,7 +6,7 @@ class Paddle(Turtle):
         self.shape('square')
         self.color('black')
         self.penup()
-        self.shapesize(stretch_wid=1, stretch_len=5)
+        self.shapesize(stretch_wid=1, stretch_len=7)
         self.goto(x=0, y=y_position)
 
     def go_left(self):
