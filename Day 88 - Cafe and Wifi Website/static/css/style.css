@@ -1,0 +1,27 @@
+ body {
+    background-image: url('../img/background.png');
+    background-size: 100% auto
+}
+
+.brd {
+    border-style: solid
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 18% 10% 4% 68%;
+    margin: 0px 10px;
+
+
+}
+
+.grid-item {
+    border: 1px solid;
+    padding: 5px
+}
+
+.grim-item-center {
+    padding: 5px;
+    margin-left: auto;
+    margin-right: auto
+}

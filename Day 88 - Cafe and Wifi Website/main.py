@@ -3,8 +3,24 @@ from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 from sqlalchemy import Integer, String, Boolean, and_
-from wx.lib.agw.hypertreelist import method
 
+from flask_bootstrap import Bootstrap5, Bootstrap
+from flask_wtf import FlaskForm
+from wtforms import SubmitField, StringField, BooleanField
+from wtforms.validators import DataRequired, URL
+
+SECRET_KEY = 'xdd'
+
+class AddCafe(FlaskForm):
+    name = StringField('Cafe name', validators=[DataRequired()])
+    map_url = StringField('Cafe Location of Google Maps (URL)', validators=[DataRequired(), URL()])
+    location = StringField('Location', validators=[DataRequired()])
+    seats = StringField('Number of seats', validators=[DataRequired()])
+    has_toilet = BooleanField('Has toilets?', validators=[DataRequired()])
+    has_wifi = BooleanField('Has wifi?', validators=[DataRequired()])
+    can_take_calls = BooleanField('Can take calls?', validators=[DataRequired()])
+    coffee_price = BooleanField('Caffe price', validators=[DataRequired()])
+    submit = SubmitField('Submit')
 app = Flask(__name__)
 
 class Base(DeclarativeBase):
@@ -12,6 +28,8 @@ class Base(DeclarativeBase):
 
 db = SQLAlchemy(model_class=Base)
 app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///cafes.db'
+app.config['SECRET_KEY'] = SECRET_KEY
+Bootstrap5(app)
 db.init_app(app)
 
 class Cafe(db.Model):
@@ -52,7 +70,6 @@ def home():
         except:
             wifi = 0
 
-
         try:
             toilet = bool(int(request.form["has_toilet"]))
         except:
@@ -66,6 +83,9 @@ def home():
                     Cafe.has_toilet == toilet)).scalars().all()
     return render_template('index.html', database=database)
 
-
+@app.route('/add', methods=['POST', 'GET'])
+def add():
+    form = AddCafe()
+    return render_template('add.html', form=form)
 
 app.run(debug=True)
