@@ -1,21 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>hihi</title>
-</head>
-<body>
-{% for item in database %}
-<li>{{ item.name }}</li>
-{% endfor %}
-<form action="{{ url_for('home') }}" method="post">
-    <input type="checkbox" id="has_socket" name="has_socket", value='1'>
-    <label for="has_socket">Has socket?</label>
-    <input type="checkbox" id="has_wifi" name="has_wifi", value="1">
-    <label for="has_wifi">Has wifi?</label>
-    <input type="checkbox" id="has_toilet" name="has_toilet", value="1">
-    <label for="has_toilet">Has toilet?</label>
-    <button type="submit">ok</button>
-</form>
-</body>
-</html>
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="grid-container" style="padding-top: 10px">
+    <div class="grid-item" >
+        Caffe Name:
+    </div>
+    <div class="grid-item">
+        Location:
+    </div>
+    <div class="grid-item">
+        Price:
+    </div>
+    <div class="grid-item-center">
+        Filters:
+    </div>
+</div>
+
+<div class="grid-container">
+    <div class="grid-item">
+        {% for item in database %}
+        {{ item.name }}<br>
+        {% endfor %}
+    </div>
+    <div class="grid-item">
+        {% for item in database %}
+        {{ item.location }}<br>
+        {% endfor %}
+    </div>
+    <div class="grid-item">
+        {% for item in database %}
+        {{ item.coffee_price }}<br>
+        {% endfor %}
+    </div>
+    <div class="grid-item-center">
+        <form action="{{ url_for('home') }}" method="post">
+            <input type="checkbox" id="has_socket" name="has_socket" class="btn-check" value='1'>
+            <label for="has_socket" class="btn btn-outline-dark">Has socket?</label>
+            <input type="checkbox" id="has_wifi" name="has_wifi" class="btn-check" value="1">
+            <label for="has_wifi" class="btn btn-outline-dark">Has wifi?</label>
+            <input type="checkbox" id="has_toilet" name="has_toilet" class="btn-check" value="1">
+            <label for="has_toilet" class="btn btn-outline-dark">Has toilet?</label>
+            <button class="btn btn-secondary" type="submit">Apply</button>
+        </form>
+        <form action="{{ url_for('home') }}" method="get" style="padding-top: 50px">
+            <button class="btn btn-dark" type="submit">Clear filters</button>
+        </form>
+
+    </div>
+</div>
+
+
+
+{% endblock %}

@@ -3,8 +3,27 @@ from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 from sqlalchemy import Integer, String, Boolean, and_
-from wx.lib.agw.hypertreelist import method
 
+from flask_bootstrap import Bootstrap5, Bootstrap
+from flask_wtf import FlaskForm
+from werkzeug.utils import redirect
+from wtforms import SubmitField, StringField, BooleanField, SelectField
+from wtforms.validators import DataRequired, URL
+
+SECRET_KEY = 'xdd'
+
+class AddCafe(FlaskForm):
+    name = StringField('Cafe name', validators=[DataRequired()])
+    map_url = StringField('Cafe Location of Google Maps (URL)', validators=[DataRequired(), URL()])
+    img_url = StringField('Cafe img (URL)', validators=[DataRequired(), URL()])
+    location = StringField('Location', validators=[DataRequired()])
+    seats = StringField('Number of seats', validators=[DataRequired()])
+    coffee_price = StringField('Caffe price', validators=[DataRequired()])
+    has_toilet = BooleanField('Has toilets?', default=False, false_values=('False', 'false', ''))
+    has_wifi = BooleanField('Has wifi?', default=False, false_values=('False', 'false', ''))
+    has_sockets = BooleanField('Has sockets?', default=False, false_values=('False', 'false', ''))
+    can_take_calls = BooleanField('Can take calls?', default=False, false_values=('False', 'false', ''))
+    submit = SubmitField('Submit')
 app = Flask(__name__)
 
 class Base(DeclarativeBase):
@@ -12,6 +31,8 @@ class Base(DeclarativeBase):
 
 db = SQLAlchemy(model_class=Base)
 app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///cafes.db'
+app.config['SECRET_KEY'] = SECRET_KEY
+Bootstrap5(app)
 db.init_app(app)
 
 class Cafe(db.Model):
@@ -52,7 +73,6 @@ def home():
         except:
             wifi = 0
 
-
         try:
             toilet = bool(int(request.form["has_toilet"]))
         except:
@@ -66,6 +86,30 @@ def home():
                     Cafe.has_toilet == toilet)).scalars().all()
     return render_template('index.html', database=database)
 
+@app.route('/add', methods=['POST', 'GET'])
+def add():
+    form = AddCafe()
+    if request.method == 'POST':
+        new_cafe = Cafe(name=request.form.get('name'),
+                        map_url=request.form.get('map_url'),
+                        img_url=request.form.get('img_url'),
+                        location=request.form.get('location'),
+                        seats=request.form.get('seats'),
+                        has_toilet=bool(request.form.get('has_toilet')),
+                        has_wifi=bool(request.form.get('has_wifi')),
+                        has_sockets=bool(request.form.get('has_sockets')),
+                        can_take_calls=bool(request.form.get('can_take_calls')),
+                        coffee_price=request.form.get('coffee_price'))
+        db.session.add(new_cafe)
+        db.session.commit()
+        return redirect('/')
+    return render_template('add.html', form=form)
 
-
+@app.route('/delete/<int:id>') #methods=['DELETE'] doesnt work...?
+def delete(id):
+    coffee_to_delete = db.get_or_404(Cafe, id)
+    if coffee_to_delete:
+        db.session.delete(coffee_to_delete)
+        db.session.commit()
+    return redirect('/')
 app.run(debug=True)
