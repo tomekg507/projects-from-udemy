@@ -12,7 +12,7 @@
     <div class="grid-item">
         Price:
     </div>
-    <div class="grim-item-center">
+    <div class="grid-item-center">
         Filters:
     </div>
 </div>
@@ -33,7 +33,7 @@
         {{ item.coffee_price }}<br>
         {% endfor %}
     </div>
-    <div class="grim-item-center">
+    <div class="grid-item-center">
         <form action="{{ url_for('home') }}" method="post">
             <input type="checkbox" id="has_socket" name="has_socket" class="btn-check" value='1'>
             <label for="has_socket" class="btn btn-outline-dark">Has socket?</label>
@@ -41,8 +41,12 @@
             <label for="has_wifi" class="btn btn-outline-dark">Has wifi?</label>
             <input type="checkbox" id="has_toilet" name="has_toilet" class="btn-check" value="1">
             <label for="has_toilet" class="btn btn-outline-dark">Has toilet?</label>
-            <button class="btn btn-dark" type="submit">Apply</button>
+            <button class="btn btn-secondary" type="submit">Apply</button>
         </form>
+        <form action="{{ url_for('home') }}" method="get" style="padding-top: 50px">
+            <button class="btn btn-dark" type="submit">Clear filters</button>
+        </form>
+
     </div>
 </div>
 

@@ -6,7 +6,8 @@ from sqlalchemy import Integer, String, Boolean, and_
 
 from flask_bootstrap import Bootstrap5, Bootstrap
 from flask_wtf import FlaskForm
-from wtforms import SubmitField, StringField, BooleanField
+from werkzeug.utils import redirect
+from wtforms import SubmitField, StringField, BooleanField, SelectField
 from wtforms.validators import DataRequired, URL
 
 SECRET_KEY = 'xdd'
@@ -14,12 +15,14 @@ SECRET_KEY = 'xdd'
 class AddCafe(FlaskForm):
     name = StringField('Cafe name', validators=[DataRequired()])
     map_url = StringField('Cafe Location of Google Maps (URL)', validators=[DataRequired(), URL()])
+    img_url = StringField('Cafe img (URL)', validators=[DataRequired(), URL()])
     location = StringField('Location', validators=[DataRequired()])
     seats = StringField('Number of seats', validators=[DataRequired()])
-    has_toilet = BooleanField('Has toilets?', validators=[DataRequired()])
-    has_wifi = BooleanField('Has wifi?', validators=[DataRequired()])
-    can_take_calls = BooleanField('Can take calls?', validators=[DataRequired()])
-    coffee_price = BooleanField('Caffe price', validators=[DataRequired()])
+    coffee_price = StringField('Caffe price', validators=[DataRequired()])
+    has_toilet = BooleanField('Has toilets?', default=False, false_values=('False', 'false', ''))
+    has_wifi = BooleanField('Has wifi?', default=False, false_values=('False', 'false', ''))
+    has_sockets = BooleanField('Has sockets?', default=False, false_values=('False', 'false', ''))
+    can_take_calls = BooleanField('Can take calls?', default=False, false_values=('False', 'false', ''))
     submit = SubmitField('Submit')
 app = Flask(__name__)
 
@@ -86,6 +89,27 @@ def home():
 @app.route('/add', methods=['POST', 'GET'])
 def add():
     form = AddCafe()
+    if request.method == 'POST':
+        new_cafe = Cafe(name=request.form.get('name'),
+                        map_url=request.form.get('map_url'),
+                        img_url=request.form.get('img_url'),
+                        location=request.form.get('location'),
+                        seats=request.form.get('seats'),
+                        has_toilet=bool(request.form.get('has_toilet')),
+                        has_wifi=bool(request.form.get('has_wifi')),
+                        has_sockets=bool(request.form.get('has_sockets')),
+                        can_take_calls=bool(request.form.get('can_take_calls')),
+                        coffee_price=request.form.get('coffee_price'))
+        db.session.add(new_cafe)
+        db.session.commit()
+        return redirect('/')
     return render_template('add.html', form=form)
 
+@app.route('/delete/<int:id>') #methods=['DELETE'] doesnt work...?
+def delete(id):
+    coffee_to_delete = db.get_or_404(Cafe, id)
+    if coffee_to_delete:
+        db.session.delete(coffee_to_delete)
+        db.session.commit()
+    return redirect('/')
 app.run(debug=True)
