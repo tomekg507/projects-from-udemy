@@ -1,0 +1,48 @@
+body {
+    background-color: #f4cd68;
+}
+
+.notebook {
+    width: 900px;
+    height: 600px;
+    position: absolute;
+    right: 0
+}
+
+
+.add {
+ width: 600px;
+ padding: 20px
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin: 0px 10px
+}
+
+grid-item {
+    padding: 5px
+}
+
+.div {
+    position: relative;
+    height:500px;
+    width: 1100px
+}
+img, p {
+    position: absolute;
+    width: 100%;
+}
+img {
+    width:50%;
+    right: 0
+}
+p {
+    width: 90%;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    margin-top: 200px;
+    box-sizing: border-box;
+    color: #fff;
+}
