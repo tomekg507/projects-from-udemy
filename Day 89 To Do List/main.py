@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+from werkzeug.utils import redirect
 
 tasks_todo = []
 
@@ -9,7 +10,11 @@ def home():
     if request.method == 'POST':
         tasks_todo.append(request.form.get('input'))
         print(tasks_todo)
-        print(request.form.get('hello'))
     return render_template('index.html', tasks=tasks_todo)
 
-app.run(debug=True)
+@app.route('/delete/<int:index>')
+def delete(index):
+    del tasks_todo[index-1]
+    return redirect('/')
+
+app.run(debug=True, port=5001)
