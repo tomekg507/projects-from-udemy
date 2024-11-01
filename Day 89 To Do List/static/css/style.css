@@ -1,0 +1,28 @@
+body {
+    background-color: #f4cd68;
+    font-family: Ariel, Helvetica, san-serif;
+}
+
+.layout {
+    position: relative;
+    width: 100%
+}
+
+.notebook {
+    width: 60%;
+    position: absolute;
+    right: 0
+}
+
+.list {
+    position: absolute;
+    width: 70%;
+    padding: 10px;
+    margin-top: 20px;
+    color: black;
+}
+
+.button {
+    width: 30px;
+    height: 25px
+}
