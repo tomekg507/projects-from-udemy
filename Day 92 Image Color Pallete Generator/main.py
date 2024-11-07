@@ -71,6 +71,7 @@ def home():
 def delete(file):
     os.remove(f'./static/{file}')
     return redirect('/')
+    
 @app.route('/generate')
 def generate():
     return render_template('generate.html')
