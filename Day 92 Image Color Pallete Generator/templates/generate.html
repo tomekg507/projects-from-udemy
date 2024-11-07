@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <img src="{{ url_for('static', filename=file) }}">
+    <br>
+    <img src="{{ url_for('static', filename='/img/plot.png') }}">
+
+    <a href="{{ url_for('delete', file=file) }}">Back?</a>
+</body>
+</html>
