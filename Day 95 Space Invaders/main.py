@@ -2,6 +2,7 @@ from turtle import Screen, Turtle
 from player import Player
 from bullet import Bullets
 from enemies import Enemies
+from barrier import Barrier
 from random import randint
 import time
 
@@ -16,6 +17,7 @@ flag = True
 player = Player()
 bullets = Bullets()
 enemies = Enemies()
+barrier = Barrier()
 
 #--------------GAME OVER-----------------
 def gameover():
@@ -68,7 +70,8 @@ def game():
 
     i += 1
 
-    # ENEMY HIT
+    # PLAYER HITS STH
+    # AN ENEMY
     for enemy in enemies.all_enemies:
         if len(bullets.all_player_bullet) > 0:
             if enemy.distance(bullets.all_player_bullet[0]) < 19:
@@ -78,11 +81,29 @@ def game():
                 bullets.all_player_bullet[0].reset()
                 del bullets.all_player_bullet[0]
 
-    # PLAYER HIT
+    # A BARRIER
+    for part in barrier.barrier:
+        if len(bullets.all_player_bullet) > 0:
+            if part.distance(bullets.all_player_bullet[0]) < 19:
+                part.reset()
+                barrier.barrier.remove(part)
+                bullets.all_player_bullet[0].reset()
+                del bullets.all_player_bullet[0]
+
+    # ENEMY HITS STH
+    # A PLAYER
     for enemy_bullet in bullets.all_enemy_bullets:
         if enemy_bullet.distance(player) < 19:
             flag = False
             screen.ontimer(gameover, 50)
+
+        #A BARRIER
+        for part in barrier.barrier:
+            if enemy_bullet.distance(part) < 19:
+                enemy_bullet.reset()
+                bullets.all_enemy_bullets.remove(enemy_bullet)
+                part.reset()
+                barrier.barrier.remove(part)
 
     # REPEATING EVERYTHING EVERY TIME
     if flag == True:
@@ -98,6 +119,9 @@ def home():
                       else None)
 
     enemies.create_enemies()
+    barrier.create_barrier(-400)
+    barrier.create_barrier(-100)
+    barrier.create_barrier(200)
     screen.update()
     game()
 
