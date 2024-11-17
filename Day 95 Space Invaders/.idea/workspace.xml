@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6d385074-c98b-4b12-91db-13923584515d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Day 94 Automate Dino Game/test0.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/img/plot.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/img/plot.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Day 93 Custom Web Scraper/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Day 93 Custom Web Scraper/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Day 94 Automate Dino Game/main.py" beforeDir="false" />
+    <list default="true" id="a47935e7-df50-4538-9111-b563c19a1346" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,24 +24,23 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 0
+  &quot;associatedIndex&quot;: 3
 }</component>
-  <component name="ProjectId" id="2oUP3wpFyGf8LWPTVl8zfjSrIcp" />
+  <component name="ProjectId" id="2ofhbvTLMuHcLifFIj4k6pW8uIZ" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.main.executor": "Run",
-    "Python.test.executor": "Run",
-    "Python.test2.executor": "Run",
-    "Python.test3.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "day94",
-    "last_opened_file_path": "/home/tomek/Desktop/linux/python/Day 82-100/Day 92 Image Color Pallete Generator"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.bullet.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.player.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;day95&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -54,11 +51,11 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="6d385074-c98b-4b12-91db-13923584515d" name="Changes" comment="" />
-      <created>1730920986129</created>
+      <changelist id="a47935e7-df50-4538-9111-b563c19a1346" name="Changes" comment="" />
+      <created>1731266612943</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1730920986129</updated>
+      <updated>1731266612943</updated>
     </task>
     <servers />
   </component>
