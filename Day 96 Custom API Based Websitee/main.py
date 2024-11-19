@@ -1,7 +1,7 @@
 import requests
 from flask import Flask, render_template, request
 
-API_KEY = 'RGAPI-0770ca3c-4f87-4889-8a27-8e69042d9afe'
+API_KEY = 'RGAPI-8b2dbd87-1999-47e0-9eda-5087e5241073'
 URL_cont = "https://europe.api.riotgames.com"
 URL_region = "https://euw1.api.riotgames.com"
 parameters = {'api_key': API_KEY}
@@ -12,7 +12,10 @@ def check_rank(gameName, tagLine):
     puuid = f'/riot/account/v1/accounts/by-riot-id/{gameName}/{tagLine}'
     response_puuid = requests.get(url=URL_cont + puuid, params=parameters)
 
-    if 400 <= response_puuid.status_code < 500:
+    if response_puuid.status_code == 403:
+        return False, 'Update your API KEY'
+
+    elif 400 <= response_puuid.status_code < 500:
         return False, 'Summoner does not exist.'
 
     elif response_puuid.status_code >= 500:
