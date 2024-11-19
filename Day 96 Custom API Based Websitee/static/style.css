@@ -1,0 +1,14 @@
+.middle {
+    margin: auto;
+    width: 60%;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body {
+    background-color: #9f9ff3;
+}
