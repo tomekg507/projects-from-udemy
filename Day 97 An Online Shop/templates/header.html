@@ -4,13 +4,18 @@
       </a>
 
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
-        <li><a href="#" class="nav-link px-2 link-dark">Features</a></li>
+        <li><a href="{{ url_for('home') }}" class="nav-link px-2 link-secondary">Home</a></li>
+        <li><a href="{{ url_for('secret') }}" class="nav-link px-2 link-dark">Secret</a></li>
       </ul>
 
       <div class="col-md-3 text-end">
-
-        <a href="{{ url_for('login') }}" class="btn btn-outline-primary me-2">Login</a>
-        <a href="{{ url_for('register') }}" class="btn btn-primary">Sign-up</a>
+        {% if current_user.is_authenticated == False %}
+            <a href="{{ url_for('login') }}" class="btn btn-outline-primary me-2">Login</a>
+            <a href="{{ url_for('register') }}" class="btn btn-primary">Sign-up</a>
+          {% else %}
+          <p>Hello {{ current_user.name }}! &nbsp; &nbsp;<a href="{{ url_for('logout') }}" class="btn btn-outline-primary">Logout</a>
+          <a href="{{ url_for('create_checkout_session') }}" class="btn btn-outline-primary">Checkout</a>
+          <a href="{{ url_for('delete') }}" class="btn btn-outline-primary">Empty Cart</a></p>
+          {% endif %}
       </div>
     </header>

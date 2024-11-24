@@ -42,9 +42,25 @@ def load_user(user_id):
 pr_1 = stripe.Product.create(name="t-shirt")
 pr_1_id = stripe.Price.create(
     product=pr_1,
-    unit_amount=200,
+    unit_amount=2000,
     currency="usd"
 )
+
+pr_2 = stripe.Product.create(name="lalala")
+pr_2_id = stripe.Price.create(
+    product=pr_2,
+    unit_amount=1000,
+    currency='usd'
+)
+
+pr_3 = stripe.Product.create(name="backpack")
+pr_3_id = stripe.Price.create(
+    product=pr_3,
+    unit_amount=1000,
+    currency='usd'
+)
+items_id = [pr_1_id, pr_2_id, pr_3_id]
+shopping_cart = []
 
 @app.route('/')
 def home():
@@ -61,6 +77,7 @@ def login():
             ok = check_password_hash(pwhash=user.password, password=password)
             if ok:
                 login_user(user)
+                return redirect('/')
     return render_template('login.html')
 
 @app.route('/logout')
@@ -87,25 +104,41 @@ def register():
         return redirect('/')
     return render_template('register.html')
 
-@app.route('/create-checkout-session', methods=['POST'])
-def create_checkout_session():
-    try:
-        checkout_session = stripe.checkout.Session.create(
-            line_items=[
-                {
-                    # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-                    'price': pr_1_id,
-                    'quantity': 1,
-                },
-            ],
-            mode='payment',
-            success_url=YOUR_DOMAIN + '/success.html',
-            cancel_url=YOUR_DOMAIN + '/cancel.html',
-        )
-    except Exception as e:
-        return str(e)
+@app.route('/add/<int:id>', methods=["POST"])
+def add(id):
+    shopping_cart.append(items_id[id])
+    return redirect('/')
 
-    return redirect(checkout_session.url, code=303)
+@app.route('/delete')
+def delete():
+    global shopping_cart
+    shopping_cart = []
+    return redirect('/')
+
+@app.route('/create-checkout-session', methods=['POST', 'GET'])
+def create_checkout_session():
+    if len(shopping_cart) > 0:
+
+        try:
+            checkout_session = stripe.checkout.Session.create(
+                line_items=[{'price': id, 'quantity': shopping_cart.count(id)} for id in items_id if id in shopping_cart
+                    # {
+                    #     # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
+                    #     'price': items_id[1],
+                    #     'quantity': 1,
+                    # },
+                    # { 'price': items_id[2], 'quantity': 1},
+                ],
+                mode='payment',
+                success_url=YOUR_DOMAIN + '/success.html',
+                cancel_url=YOUR_DOMAIN + '/cancel.html',
+            )
+        except Exception as e:
+            return str(e)
+
+        return redirect(checkout_session.url, code=303)
+    else:
+        return redirect('/')
 
 @app.route('/checkout')
 def checkout():
