@@ -7,7 +7,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, UserMixin, LoginManager, login_required, logout_user, current_user
 
 # api from stripe page
-stripe.api_key = 'sk_test_51QNdE7EP7p7KWAiMAINUd828WrGfJpqn34qor3BvaWKJqrYxuS4ueWPSKzBJX4ZizzUbTwwOjQymz590nhH2xnxj00f3T48WPx'
+stripe.api_key = 'stripe key'
 YOUR_DOMAIN = 'http://localhost:4242'
 
 app = Flask(__name__)
